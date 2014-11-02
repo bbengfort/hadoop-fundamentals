@@ -52,3 +52,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Non-Compressed Data
+data/*.csv
+data/*.txt
