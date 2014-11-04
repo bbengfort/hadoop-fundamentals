@@ -6,7 +6,7 @@ class SumReducer(Reducer):
 
     def reduce(self):
         for current, group in self:
-            self.emit(key, sum(int(item[1]) for item in values))
+            self.emit(current, sum(int(item[1]) for item in group))
 
 if __name__ == '__main__':
     reducer = SumReducer()
