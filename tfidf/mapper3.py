@@ -16,9 +16,10 @@ class TFIDFMapper(Mapper):
         for line in self:
             key, val = map(make_tuple, line.split(self.sep))
             tf, n = (int(x) for x in val)
-            idf = math.log(self.N/n)
-            self.emit(key, idf*tf)
+	    if n > 0:
+            	idf = math.log(self.N/n)
+            	self.emit(key, idf*tf)
 
 if __name__ == '__main__':
-    mapper = TFIDFMapper(sys.stdin, documents=2)
+    mapper = TFIDFMapper(sys.stdin, documents=41)
     mapper.map()

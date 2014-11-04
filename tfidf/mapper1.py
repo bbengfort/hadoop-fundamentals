@@ -18,9 +18,12 @@ class TermFrequencyMapper(Mapper):
 
     def map(self):
         for line in self:
+            parts = line.split("\t")
+            docid = parts[0].split("@")[0]
+            line  = "\t".join(parts[1:])
+#           docid = self.get_job_conf("map.input.file") or "DOCID1"
             for word in re.split(self.tokenizer, line):
                 word  = word.lower()
-                docid = self.get_job_conf("map.input.file") or "DOCID1"
                 if word and word not in self.stopwords and word.isalpha():
                     self.emit((word, docid), 1)
 
