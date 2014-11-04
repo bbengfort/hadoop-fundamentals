@@ -26,5 +26,5 @@ if __name__ == '__main__':
 
     # Evaluate the model on training data
     valuesAndPreds = parsedData.map(lambda p: (p.label, model.predict(p.features)))
-    MSE = valuesAndPreds.map(lambda (v, p): (v - p)**2).reduce(lambda x, y: x + y) / valuesAndPreds.count()
+    MSE = valuesAndPreds.map(lambda (v, p): (v - p)**2).reduce(lambda x, y: x + y).count() / valuesAndPreds.count()
     print("Mean Squared Error = " + str(MSE))

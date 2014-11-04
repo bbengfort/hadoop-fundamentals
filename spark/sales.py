@@ -36,7 +36,7 @@ if __name__ == '__main__':
     sc   = SparkContext(conf=conf)
 
     # Base RDD
-    orders = sc.textFile("/Users/benjamin/Desktop/shopping/orders.csv")
+    orders = sc.textFile("shopping/orders.csv")
 
     # Transform all rows into a parsed Orders object
     orders = orders.map(split).map(parse)
@@ -58,4 +58,4 @@ if __name__ == '__main__':
     print months.take(5)
 
     # # Count Action 2
-    # print products.count()
+    print products.count()
