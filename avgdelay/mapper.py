@@ -17,7 +17,7 @@ class Mapper(object):
 	def map(self):
 		reader = csv.reader(self.stream)
 		for row in reader:
-			self.emit(row[8], row[31])
+			self.emit(row[14], row[31])
 
 if __name__ == '__main__':
  	mapper = Mapper(sys.stdin)
