@@ -17,12 +17,3 @@ class DocumentTermsMapper(Mapper):
 if __name__ == '__main__':
     mapper = DocumentTermsMapper(sys.stdin)
     mapper.map()
-
-# def mapper((word, docid), tf):
-#     emit(word, (docid, tf, 1))
-
-# def combiner(word, values):
-# terms = sum(num for (docid, tf, num) in values)
-#     emit(word, (docid, tf, terms))
-
-

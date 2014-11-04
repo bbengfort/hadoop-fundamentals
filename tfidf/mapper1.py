@@ -19,24 +19,11 @@ class TermFrequencyMapper(Mapper):
     def map(self):
         for line in self:
             for word in re.split(self.tokenizer, line):
-                word = word.lower()
+                word  = word.lower()
+                docid = self.get_job_conf("map.input.file") or "DOCID1"
                 if word and word not in self.stopwords and word.isalpha():
-                    self.emit((word, "DOC1"), 1)
+                    self.emit((word, docid), 1)
 
 if __name__ == '__main__':
     mapper = TermFrequencyMapper(sys.stdin)
     mapper.map()
-
-
-
-# import re
-# tokenize = re.compile(r'\W+')
-
-# def mapper(docid, line):
-#     for word in re.split(tokenize, line):
-#         emit((word, docid), 1)
-
-# def reducer((word, docid), counts):
-#     emit((word, docid), sum(counts))
-
-# combiner = reducer

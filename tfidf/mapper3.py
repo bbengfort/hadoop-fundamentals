@@ -22,12 +22,3 @@ class TFIDFMapper(Mapper):
 if __name__ == '__main__':
     mapper = TFIDFMapper(sys.stdin, documents=2)
     mapper.map()
-
-# def mapper((word, docid), (tf, n)):
-#     # Assume the number of documents is known
-#     # N is the number of documents in the corpus
-#     idf = math.log(N/n)
-#     emit((word, docid), idf*tf)
-
-# def identityReducer(key, values):
-#     pass

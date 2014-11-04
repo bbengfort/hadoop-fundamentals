@@ -21,8 +21,3 @@ class DocumentTermsReducer(Reducer):
 if __name__ == '__main__':
     reducer = DocumentTermsReducer(sys.stdin)
     reducer.reduce()
-
-# def reducer(word, values):
-#     terms = sum(num for (docid, tf, num) in values)
-#     for docid, tf, num in values:
-#         emit((word, docid), (tf, terms))
