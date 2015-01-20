@@ -136,10 +136,10 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE;
 
-LOAD DATA INPATH '/user/student/baseball/input/Master.csv' OVERWRITE INTO TABLE master;
+LOAD DATA LOCAL INPATH '../../data/baseball/Master.csv' OVERWRITE INTO TABLE master;
 
-LOAD DATA LOCAL INPATH '/home/student/hadoop-fundamentals/data/baseball/Teams.csv' OVERWRITE INTO TABLE teams;
+LOAD DATA LOCAL INPATH '../../data/baseball/Teams.csv' OVERWRITE INTO TABLE teams;
 
-LOAD DATA LOCAL INPATH '/home/student/hadoop-fundamentals/data/baseball/Salaries.csv' OVERWRITE INTO TABLE salaries;
+LOAD DATA LOCAL INPATH '../../data/baseball/Salaries.csv' OVERWRITE INTO TABLE salaries;
 
-LOAD DATA LOCAL INPATH '/home/student/hadoop-fundamentals/data/baseball/Batting.csv' OVERWRITE INTO TABLE batting;
+LOAD DATA LOCAL INPATH '../../data/baseball/Batting.csv' OVERWRITE INTO TABLE batting;
