@@ -101,8 +101,8 @@ if __name__ == "__main__":
 
     print "Got %d ratings from %d users on %d movies." % (num_ratings, num_users, num_movies)
 
-    # Create the training set of from a subset of the ratings
-    # (where last digit of timestamp < 6), add my_ratings and cache
+    # Create the training (60%) and validation (40%) set, based on last digit
+    # of tiemstamp
     num_partitions = 4
     training = ratings.filter(lambda x: x[0] < 6) \
                       .values() \
@@ -110,18 +110,15 @@ if __name__ == "__main__":
                       .repartition(num_partitions) \
                       .cache()
 
-    validation = ratings.filter(lambda x: x[0] >= 6 and x[0] < 8) \
+    validation = ratings.filter(lambda x: x[0] >= 6) \
                       .values() \
                       .repartition(num_partitions) \
                       .cache()
 
-    test = ratings.filter(lambda x: x[0] >= 8).values().cache()
-
     num_training = training.count()
     num_validation = validation.count()
-    num_test = test.count()
 
-    print "Training: %d, validation: %d, test: %d" % (num_training, num_validation, num_test)
+    print "Training: %d and validation: %d\n" % (num_training, num_validation)
 
     # rank is the number of latent factors in the model.
     # iterations is the number of iterations to run.
@@ -130,17 +127,19 @@ if __name__ == "__main__":
     num_iterations = 10
     lmbda = 0.1
 
-    print "Training model based on rank = %d, %d iterations, and lambda = %.1f." % \
+    print "Training model based on rank = %d, %d iterations, and lambda = %.1f.\n" % \
         (rank, num_iterations, lmbda)
 
     # Train model with training data and configured rank and iterations
     model = ALS.train(training, rank, num_iterations, lmbda)
 
     # Print RMSE of model
+    training_rmse = compute_rmse(model, training, num_training)
     validation_rmse = compute_rmse(model, validation, num_validation)
 
-    print "RMSE (validation) = %f for the model trained with " % validation_rmse + \
+    print "RMSE (training) = %f for the model trained with " % training_rmse + \
           "rank = %d, lambda = %.1f, and numIter = %d." % (rank, lmbda, num_iterations)
+    print "RMSE (validation) = %f\n" % validation_rmse
 
     # get set of movie_ids from my_ratings
     my_rated_movie_ids = set([r[1] for r in my_ratings])
