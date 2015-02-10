@@ -127,9 +127,6 @@ if __name__ == "__main__":
     num_iterations = 10
     lmbda = 0.1
 
-    print "Training model based on rank = %d, %d iterations, and lambda = %.1f.\n" % \
-        (rank, num_iterations, lmbda)
-
     # Train model with training data and configured rank and iterations
     model = ALS.train(training, rank, num_iterations, lmbda)
 
