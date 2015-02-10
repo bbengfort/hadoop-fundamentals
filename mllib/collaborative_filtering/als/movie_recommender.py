@@ -102,7 +102,7 @@ if __name__ == "__main__":
     print "Got %d ratings from %d users on %d movies." % (num_ratings, num_users, num_movies)
 
     # Create the training (60%) and validation (40%) set, based on last digit
-    # of tiemstamp
+    # of timestamp
     num_partitions = 4
     training = ratings.filter(lambda x: x[0] < 6) \
                       .values() \
@@ -134,12 +134,12 @@ if __name__ == "__main__":
     model = ALS.train(training, rank, num_iterations, lmbda)
 
     # Print RMSE of model
-    training_rmse = compute_rmse(model, training, num_training)
     validation_rmse = compute_rmse(model, validation, num_validation)
 
-    print "RMSE (training) = %f for the model trained with " % training_rmse + \
-          "rank = %d, lambda = %.1f, and numIter = %d." % (rank, lmbda, num_iterations)
-    print "RMSE (validation) = %f\n" % validation_rmse
+    # evaluate the trained model on the validation set
+    print "The model was trained with rank = %d, lambda = %.1f, and %d iterations." % \
+        (rank, lmbda, num_iterations)
+    print "Its RMSE on the validation set is %f." % validation_rmse
 
     # get set of movie_ids from my_ratings
     my_rated_movie_ids = set([r[1] for r in my_ratings])
