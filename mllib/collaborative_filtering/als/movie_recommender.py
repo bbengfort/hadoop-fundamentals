@@ -99,7 +99,7 @@ if __name__ == "__main__":
     num_users = ratings.values().map(lambda r: r[0]).distinct().count()
     num_movies = ratings.values().map(lambda r: r[1]).distinct().count()
 
-    print "Got %d ratings from %d users on %d movies." % (num_ratings, num_users, num_movies)
+    print "Got %d ratings from %d users on %d movies.\n" % (num_ratings, num_users, num_movies)
 
     # Create the training (60%) and validation (40%) set, based on last digit
     # of timestamp
@@ -134,9 +134,9 @@ if __name__ == "__main__":
     validation_rmse = compute_rmse(model, validation, num_validation)
 
     # evaluate the trained model on the validation set
-    print "The model was trained with rank = %d, lambda = %.1f, and %d iterations." % \
+    print "The model was trained with rank = %d, lambda = %.1f, and %d iterations.\n" % \
         (rank, lmbda, num_iterations)
-    print "Its RMSE on the validation set is %f." % validation_rmse
+    print "Its RMSE on the validation set is %f.\n" % validation_rmse
 
     # get set of movie_ids from my_ratings
     my_rated_movie_ids = set([r[1] for r in my_ratings])
