@@ -9,7 +9,7 @@ from pyspark import SparkConf, SparkContext
 from pyspark.mllib.recommendation import ALS
 
 ##########################################################################
-# Imports
+# Helpers
 ##########################################################################
 
 def parse_rating(line, sep='::'):
