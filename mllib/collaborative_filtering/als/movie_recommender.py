@@ -86,11 +86,11 @@ if __name__ == "__main__":
     my_ratings_rdd = sc.parallelize(my_ratings, 1)
 
     # Create ratings RDD of (last digit of timestamp, (user_id, movie_id, rating))
-    ratings = sc.textFile("/home/hadoop/ml-1m/ratings.dat") \
+    ratings = sc.textFile("/home/hadoop/hadoop-fundamentals/data/ml-1m/ratings.dat") \
                  .map(parse_rating)
 
     # Create movies RDD, collect, and convert to dict of {movie_id: title}
-    movies = dict(sc.textFile("/home/hadoop/ml-1m/movies.dat")
+    movies = dict(sc.textFile("/home/hadoop/hadoop-fundamentals/data/ml-1m/movies.dat")
                    .map(parse_movie)
                    .collect())
 
