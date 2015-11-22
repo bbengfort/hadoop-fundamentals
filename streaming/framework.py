@@ -18,13 +18,13 @@ class Streaming(object):
         self.sep    = separator
 
     def status(self, message):
-        sys.stderr.write("reporter:status:%s" % message)
+        sys.stderr.write("reporter:status:{}\n".format(message))
 
     def counter(self, counter, amount=1, group="Python Streaming"):
-        sys.stderr.write("reporter:counter:%s,%s,%i" % group, counter, amount)
+        sys.stderr.write("reporter:counter:{},{},{}\n".format(group, counter, amount))
 
     def emit(self, key, value):
-        sys.stdout.write("%s%s%s\n" % (key, self.sep, value))
+        sys.stdout.write("{}{}{}\n".format(key, self.sep, value))
 
     def read(self):
         for line in self.infile:
