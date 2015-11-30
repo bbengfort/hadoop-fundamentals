@@ -53,7 +53,7 @@ def compute_rmse(model, data, n):
 ##########################################################################
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print "Incorrect number of arguments, correct usage: dating_recommender.py [user_id] [match_gender]"
         sys.exit(-1)
 
