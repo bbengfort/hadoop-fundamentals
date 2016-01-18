@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import random
 import string
 import time
@@ -33,6 +34,10 @@ if __name__ == "__main__":
     customers = generate_customers(10)
     skus = generate_skus(30)
     actions = ('view', 'click', 'add_cart', 'remove_cart', 'purchase',)
+
+    log_dir = '/tmp/impressions'
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
 
     # Setup logger
     logger = logging.getLogger("impression_tracking")
