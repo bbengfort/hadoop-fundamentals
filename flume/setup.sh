@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo -u hdfs hadoop fs -mkdir -p /user/hadoop/impressions/
-sudo -u hdfs hadoop fs -chmod 1777 /user/hadoop/impressions/
+sudo -u hadoop hadoop fs -mkdir -p /user/hadoop/impressions/
+sudo -u hadoop hadoop fs -chmod 1777 /user/hadoop/impressions/
 
 sudo mkdir /tmp/impressions
 sudo chmod 777 /tmp/impressions
