@@ -13,7 +13,7 @@ def generate_customers(num):
     customers = []
     customers.append({'cid': 'anonymous'})
     for i in xrange(num):
-        cid = random.randint(10000, 99999)
+        cid = str(random.randint(10000, 99999))
         customers.append({'ip': random_ip(), 'cid': cid})
     return customers
 
