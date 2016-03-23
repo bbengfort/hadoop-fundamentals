@@ -1,25 +1,23 @@
 #!/usr/bin/env python
-# reducer1.py
+# reducer
 # A simple implementation of a SumReducer.
 #
 # Author:   Benjamin Bengfort <benjamin@bengfort.com>
-# Created:  Tue Dec 01 12:55:29 2015 -0500
+# Created:  Thu Nov 12 07:28:16 2015 -0500
 
 """
 The sum reducer simply adds all of the values associated with a key.
 
-To execute this mapper and associated reducer on Hadoop Streaming use the
+To execute this reducer and associated mapper on Hadoop Streaming use the
 following command:
 
-    $ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
-        -input reuters \
-        -output reuters_term_frequency \
-        -mapper mapper1.py \
-        -reducer reducer1.py \
-        -file mapper1.py \
-        -file reducer1.py \
-        -file stopwords.txt \
-        -file framework.py
+    $ $ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
+        -input input_dir \
+        -output output_dir \
+        -mapper mapper.py \
+        -reducer reducer.py \
+        -file mapper.py \
+        -file reducer.py
 
 The final result should be a sum by key for the emitted mapper.
 """

@@ -10,7 +10,7 @@ if __name__ == '__main__':
     sc   = SparkContext(conf=conf)
 
     # Load and parse the Rating data
-    data = sc.textFile("~/hadoop-fundamentals/data/dating/ratings.csv")
+    data = sc.textFile("dating/ratings.csv")
 
     ratings = data.map(lambda line: array([float(x) for x in line.split(',')]))
 
