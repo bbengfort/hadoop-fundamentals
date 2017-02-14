@@ -60,3 +60,5 @@ target/
 data/*
 !data/*.tgz
 !data/*.zip
+
+.ipynb_checkpoint
