@@ -62,3 +62,4 @@ data/*
 !data/*.zip
 
 .ipynb_checkpoints
+metastore_db
